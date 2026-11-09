@@ -2,24 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Peminjaman extends Model
 {
-    protected $fillable = [
-        'kode_pinjam',
-        'buku_id',
-        'nim_peminjam',
-        'nama_peminjam',
-        'tanggal_pinjam',
-        'tanggal_jatuh_tempo',
-        'tanggal_kembali',
-        'status',
-    ];
+    use HasFactory;
 
-    public function buku(): BelongsTo
-    {
-        return $this->belongsTo(Buku::class);
-    }
+    // Tambahkan baris ini agar Laravel tidak salah cari tabel
+    protected $table = 'peminjamans';
+
+    // ... (biarkan kode fillable atau relasi belongsTo yang sudah ada di bawahnya) ...
 }
